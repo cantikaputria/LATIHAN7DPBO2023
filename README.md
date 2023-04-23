@@ -4,6 +4,10 @@ Repository untuk memenuhi Latihan Praktikum 7 Mata Kuliah Desain dan Pemrograman
 # Janji
 > Saya Cantika Putri Arbiliansyah dengan NIM 2103727 mengerjakan soal Latihan Praktikum 7 dalam Praktikum mata kuliah Desain dan Pemrograman Berorientasi Objek, untuk keberkahan-Nya maka saya tidak melakukan kecurangan seperti yang telah dispesifikasikan. Aamiin
 
+# Alur Program
+1. Gunakan tombol W A S D atau arrow key untuk memindahkan posisi lingkaran
+2. Setiap perpindahan posisi lingkaran, skornya akan bertambah satu
+
 # Dokumentasi
 ![image](https://user-images.githubusercontent.com/85111014/233837745-5ae665dc-7ccb-4605-9c92-c7c14d9ce240.png)
 
