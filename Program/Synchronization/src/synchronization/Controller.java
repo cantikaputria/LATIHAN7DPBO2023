@@ -20,8 +20,8 @@ public class Controller extends KeyAdapter implements KeyListener
     
     private Game game;
     private Handler handler;
-    
-    int score1 = 0;
+    private int moveScore = 0;
+    private int keyW = 0, keyA = 0, keyS = 0, keyD = 0;
     
     /**
      * Constructor.
@@ -103,32 +103,49 @@ public class Controller extends KeyAdapter implements KeyListener
             {
                 // Move up.
                 temp.setVelY(-5);
-                score1++;
-                game.setScore(score1);
-                
+                if(keyW == 0)
+                {
+                    keyW = 1;
+                    moveScore++;
+                }
+                keyA = 0; keyS = 0; keyD = 0;
+                game.setScore(moveScore);
             }
             if((key == KeyEvent.VK_A) || (key == KeyEvent.VK_LEFT))
             {
                 // Move left.
                 temp.setVelX(-5);
-                score1++;
-                game.setScore(score1);
-                
+                if(keyA == 0)
+                {
+                    keyA = 1;
+                    moveScore++;
+                }
+                keyW = 0; keyS = 0; keyD = 0;
+                game.setScore(moveScore);
             }
             if((key == KeyEvent.VK_S) || (key == KeyEvent.VK_DOWN))
             {
                 // Move down.
                 temp.setVelY(+5);
-                score1++;
-                game.setScore(score1);
-                
+                if(keyS == 0)
+                {
+                    keyS = 1;
+                    moveScore++;
+                }
+                keyA = 0; keyW = 0; keyD = 0;
+                game.setScore(moveScore);
             }
             if((key == KeyEvent.VK_D) || (key == KeyEvent.VK_RIGHT))
             {
                 // Move right.
                 temp.setVelX(+5);
-                score1++;
-                game.setScore(score1);
+                if(keyD == 0)
+                {
+                    keyD = 1;
+                    moveScore++;
+                }
+                keyA = 0; keyS = 0; keyW = 0;
+                game.setScore(moveScore);
             }
         }
     }

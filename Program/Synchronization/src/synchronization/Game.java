@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 
 /**
  *
@@ -35,10 +36,12 @@ public class Game extends Canvas implements Runnable
     
     /* Animation-related attributes. */
     private boolean startCounting = false;
-    private int score = 0;
+    private int moveScore = 0;
+    private int touchScore = 0;
     private int counter = 0;
     private int stateCounter = 0;
     private int direction = 0;
+    private Random rand = new Random();  
     
     // Default constructor.
     public Game()
@@ -62,6 +65,7 @@ public class Game extends Canvas implements Runnable
             if(running)
             {
                 handler.add(new Player(320, 160));
+                handler.add(new TouchMe(400,200));
             }
         } catch(Exception e)
         {
@@ -90,12 +94,12 @@ public class Game extends Canvas implements Runnable
     
     public int getScore()
     {
-        return score;
+        return moveScore;
     }
 
-    public void setScore(int score)
+    public void setScore(int moveScore)
     {
-        this.score = score;
+        this.moveScore = moveScore;
     }
     
     /**
@@ -150,7 +154,7 @@ public class Game extends Canvas implements Runnable
             System.out.println("Thread error : " + e.getMessage());
         }
     }
-    
+   
     // Initialize game when it run for the first time.
     public void render()
     {
@@ -176,9 +180,10 @@ public class Game extends Canvas implements Runnable
             Font oldFont = g.getFont();
             Font newFont = oldFont.deriveFont(oldFont.getSize() * 1.3f);
             g.setFont(newFont);
-            
             g.setColor(Color.white);
-            g.drawString("Move Score : " + Integer.toString(score), 20, 30);   
+            g.drawString("Touch Score : " + Integer.toString(touchScore), 20, 30);
+            g.setColor(Color.white);
+            g.drawString("Move Score : " + Integer.toString(moveScore), 20, 50);   
         }
         
         // Loop the process so it seems like "FPS".
@@ -186,11 +191,18 @@ public class Game extends Canvas implements Runnable
         bs.show();
     }
     
+    //if player touch object "touchme"
+    public boolean touch(GameObject player, GameObject touchme)
+    {
+        return player.getX() + 30 >= touchme.getX() && player.getX() <= touchme.getX() + 30 && 
+               player.getY() + 30 >= touchme.getY() && player.getY() <= touchme.getY() + 30;
+    }
+    
     // Main loop proccess.
     public void loop()
     {
         GameObject player = null;
-        GameObject square=null;
+        GameObject touchme = null;
         
         handler.loop();
         if(this.running)
@@ -219,10 +231,21 @@ public class Game extends Canvas implements Runnable
                 {
                     player = handler.get(i);
                 }
-                if(handler.get(i).getType().equals("Square"))
+                if(handler.get(i).getType().equals("TouchMe"))
                 {
-                    square = handler.get(i);
+                    touchme = handler.get(i);
                 }
+            }
+            
+            //jika player menyentuh objek
+            if(this.touch(player, touchme))
+            {
+                //touch score bertambah 5
+                this.touchScore += 5;
+                
+                //memindahkan objek dengan koordinatnya random
+                touchme.setX(rand.nextInt(width));
+                touchme.setY(rand.nextInt(height));
             }
         }
     }

@@ -5,7 +5,6 @@
 package synchronization;
 
 import java.awt.Graphics;
-import java.util.Random;
 
 /**
  *
@@ -20,8 +19,8 @@ public class GameObject implements GameInterface
     protected int x, y;          // Position.
     protected int width, height; // Dimension.
     protected int velX, velY;    // Velocity.
-    protected String type;       // Object type.
-    
+    protected String type;       // Object type
+
     /**
      * Constructor.
      */
@@ -137,7 +136,7 @@ public class GameObject implements GameInterface
     {
         this.type = type;
     }
-   
+    
     /**
      * Override interface (unused, only to avoid error).
      */
