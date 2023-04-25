@@ -11,15 +11,19 @@ Program ini tersusun dari :
 3. Class Game, berfungsi untuk mengatur jalannya game
 4. Class Game Object, berfungsi untuk mengatur tampilan objek game
 5. Class Handler, berfungsi untuk mengelola objek game
-6. Class Player, berfungsi untuk mengatur objek lingkaran (dalam game ini)
-7. Class Synchronization, berfungsi sebagai program utama (main)
-8. Game Interface, berfungsi merender dan menammpilkan objek game
+6. Class Player, berfungsi untuk mengatur objek bola
+7. Class TouchMe, berfungsi untuk mengatur objek kotak yang akan dikenai bola
+8. Class Synchronization, berfungsi sebagai program utama (main)
+9. Game Interface, berfungsi merender dan menammpilkan objek game
 
 # Alur Program
-1. Gunakan tombol W A S D atau arrow key untuk memindahkan posisi lingkaran
-2. Setiap perpindahan posisi lingkaran, skornya akan bertambah satu
+1. Pemain bisa menggunakan tombol W A S D atau arrow key untuk memindahkan posisi bola
+2. Move Score merupakan total skor perpindahan posisi bola
+3. Touch Score merupakan total skor ketika bola menyentuh kotak
+4. Move Score akan bertambah +1 jika terjadi perpindahan pada bola dengan urutan penekanan tombol berbeda
+5. Move Score tidak akan bertambah +1 jika pemain menekan tombol yang sama
+4. Touch Score akan bertambah +5 jika bola mengenai kotak
 
 # Dokumentasi
-![image](https://user-images.githubusercontent.com/85111014/233837745-5ae665dc-7ccb-4605-9c92-c7c14d9ce240.png)
+https://user-images.githubusercontent.com/85111014/234160170-5575d25d-28c5-4057-9942-07ea21f8ecc8.mp4
 
-https://user-images.githubusercontent.com/85111014/233837713-84deb419-dace-402b-91a5-1aabafcebbc9.mp4
